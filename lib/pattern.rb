@@ -6,4 +6,8 @@ module Pattern
   def self.wc
     Wildcard.new
   end
+  
+  def wc
+    Wildcard.new
+  end
 end
