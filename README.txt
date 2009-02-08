@@ -1,32 +1,48 @@
 = pattern
 
-* FIX (url)
+* http://github.com/bkerley/matcher/
 
 == DESCRIPTION:
 
-FIX (describe your package)
+Erlang-style pattern matching for Ruby
 
 == FEATURES/PROBLEMS:
 
-* FIX (list of features or problems)
+* FEATURE: matches patterns
+* PROBLEM: is a proof of concept
+* FEATURE: will entertain you on the train ride home from acts\_as\_conference 2009
+* PROBLEM: you've probably already gone home
 
 == SYNOPSIS:
 
-  FIX (code sample of usage)
+  require 'lib/pattern'
+  p = Matcher.new
+  slug = mock()
+  slug.expects(:get_executed).once
+  p.match(:alpha, wc) do
+    slug.get_executed
+  end
+  p.match(wc, :bravo) do
+    assert false
+  end
+  p[:alpha, :bravo]
 
 == REQUIREMENTS:
 
-* FIX (list of requirements)
+* Testing requires shoulda and mocha.
+* That is all.
 
 == INSTALL:
 
-* FIX (sudo gem install, anything else)
+* This should end up as a gem on github, so:
+
+  gem install bkerley-pattern
 
 == LICENSE:
 
-(The MIT License)
+The MIT License
 
-Copyright (c) 2009 FIX
+Copyright (c) 2009 Bryce Kerley
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
