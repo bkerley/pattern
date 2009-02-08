@@ -33,6 +33,19 @@ class PatternTest < Test::Unit::TestCase
     assert_not_run_with [/face plant$/], ["worm food"]
   end
   
+  should 'order matches' do
+    p = Matcher.new
+    slug = mock()
+    slug.expects(:get_executed).once
+    p.match(:alpha, wc) do
+      slug.get_executed
+    end
+    p.match(wc, :bravo) do
+      assert false
+    end
+    p[:alpha, :bravo]
+  end
+  
   def assert_not_run_with(template, execute)
     p = Matcher.new
     p.match(*template) do
