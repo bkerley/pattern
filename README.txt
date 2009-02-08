@@ -10,6 +10,8 @@ Erlang-style pattern matching for Ruby
 
 * FEATURE: matches patterns
 * PROBLEM: is a proof of concept
+* FEATURE: works with any kind of object that does the right thing on #===
+* PROBLEM: except for Matcher::Wildcard (conveniently instantiated with Matcher.wc or Matcher#wc)
 * FEATURE: will entertain you on the train ride home from acts\_as\_conference 2009
 * PROBLEM: you've probably already gone home
 
