@@ -45,6 +45,7 @@ class PatternTest < Test::Unit::TestCase
     p.match(*template) do
       assert false
     end
+    add_assertion
     p[*execute]
   end
   
