@@ -12,30 +12,38 @@ class PatternTest < Test::Unit::TestCase
   end
   
   should 'not blindly match' do
-    p = Matcher.new
-    p.match(0) do
-      assert false
-    end
-    p[1]
+    assert_not_run_with [0], [1]
   end
   
   should 'run some pattern' do
-    magazine = mock()
-    magazine.expects(:ripoutallthepages).once
-    p = Matcher.new
-    p.match(0) do
-      magazine.ripoutallthepages
-    end
-    p[0]
+    assert_runs_with [0], [0]
   end
   
   should 'support wildcards' do
-    magazine = mock()
-    magazine.expects(:ripoutallthepages).once
+    assert_runs_with [wc], [0]
+  end
+  
+  should 'match multiple arguments' do
+    assert_runs_with [0, wc], [0, 1]
+    assert_runs_with [1, 2], [1, 2]
+  end
+  
+  def assert_not_run_with(template, execute)
     p = Matcher.new
-    p.match(wc) do
-      magazine.ripoutallthepages
+    p.match(*template) do
+      assert false
     end
-    p[0]
+    p[*execute]
+  end
+  
+  def assert_runs_with(template, execute)
+    slug = mock()
+    slug.expects(:get_executed).once
+    p = Matcher.new
+    p.match(*template) do
+      slug.get_executed
+    end
+    p[*execute]
+    assert true # make the assertion counter go up
   end
 end
