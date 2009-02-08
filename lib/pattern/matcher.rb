@@ -9,7 +9,8 @@ module Pattern
     end
     
     def [](*args)
-      @options.detect{|o|o.match?(args)}
+      selected = @options.detect{|o|o.match?(args)}
+      selected.block[*args] if selected
     end
     
     def available
