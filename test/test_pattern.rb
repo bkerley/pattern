@@ -23,8 +23,8 @@ class PatternTest < Test::Unit::TestCase
   end
   
   should 'work with a regex' do
-    assert_runs_with [/face plant$/], ["just did a face plant"]
-    assert_not_run_with [/face plant$/], ["worm food"]
+    assert_runs_with [/ends ok$/], ["it ends ok"]
+    assert_not_run_with [/ends ok$/], ["it didn't end well"]
   end
   
   should 'order matches' do
