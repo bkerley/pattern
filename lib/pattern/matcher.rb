@@ -9,7 +9,11 @@ module Pattern
     end
     
     def [](*args)
-      @options.detect{|o|o.match?(*args)}
+      @options.detect{|o|o.match?(args)}
+    end
+    
+    def available
+      @options.map{|o|o.args}
     end
   end
 end
