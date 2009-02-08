@@ -4,12 +4,6 @@ require File.join(File.dirname(__FILE__), '../lib/pattern')
 
 class PatternTest < Test::Unit::TestCase
   include Pattern
-  should 'create a pattern' do
-    p = Matcher.new
-    p.match(wc) do
-    end
-    assert p.available.first.first.is_a? Wildcard
-  end
   
   should 'not blindly match' do
     assert_not_run_with [0], [1]
@@ -62,6 +56,5 @@ class PatternTest < Test::Unit::TestCase
       slug.get_executed
     end
     p[*execute]
-    assert true # make the assertion counter go up
   end
 end
