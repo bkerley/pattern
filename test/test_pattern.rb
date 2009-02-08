@@ -28,6 +28,11 @@ class PatternTest < Test::Unit::TestCase
     assert_runs_with [1, 2], [1, 2]
   end
   
+  should 'work with a regex' do
+    assert_runs_with [/face plant$/], ["just did a face plant"]
+    assert_not_run_with [/face plant$/], ["worm food"]
+  end
+  
   def assert_not_run_with(template, execute)
     p = Matcher.new
     p.match(*template) do
