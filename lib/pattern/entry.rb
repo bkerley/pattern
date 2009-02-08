@@ -7,8 +7,8 @@ module Pattern
     end
     
     def match?(args)
-      return false if args.zip(@args).detect do |a|
-        !(a[1].is_a?(Wildcard)) && !(a[0] === a[1])
+      return false if @args.zip(args).detect do |a|
+        !(a[0].is_a?(Wildcard)) && !(a[0] === a[1])
       end
       
       @block[*args]
